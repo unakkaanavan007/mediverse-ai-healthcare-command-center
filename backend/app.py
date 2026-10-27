@@ -11,7 +11,7 @@ from pypdf import PdfReader
 
 load_dotenv()
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///mediverse.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///mediverse.db').replace('postgresql://', 'postgresql+psycopg://', 1)
 app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'local-demo-only-change-this-secret')
 if os.getenv('VERCEL') and (not os.getenv('DATABASE_URL') or not os.getenv('JWT_SECRET_KEY') or not os.getenv('DEMO_ADMIN_PASSWORD')):
  raise RuntimeError('Set DATABASE_URL, JWT_SECRET_KEY and DEMO_ADMIN_PASSWORD for Vercel')
