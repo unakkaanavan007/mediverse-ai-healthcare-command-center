@@ -1,0 +1,5 @@
+backend/.env
+backend/.venv/
+backend/instance/
+frontend/node_modules/
+frontend/dist/
